@@ -1,6 +1,11 @@
+*{
+    padding: 0;
+    margin: 0;
+}
 body {
-    background: red;
+    display: flex;
     position: absolute;
     min-height: 100%;
+    height: 400px;
     width: 100%;
 }

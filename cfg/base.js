@@ -1,4 +1,5 @@
 'use strict';
+
 let path = require('path');
 let publicPath = '/', port = 8000;
 
