@@ -1,0 +1,6 @@
+body {
+    background: red;
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+}
