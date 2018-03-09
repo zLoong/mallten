@@ -1,0 +1,19 @@
+{
+  "name": "mallten",
+  "version": "1.0.0",
+  "description": "react project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zLoong/mallten.git"
+  },
+  "author": "loong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zLoong/mallten/issues"
+  },
+  "homepage": "https://github.com/zLoong/mallten#readme"
+}
