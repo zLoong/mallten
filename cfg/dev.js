@@ -1,23 +1,9 @@
 'use strict';
 
 let path = require('path');
-let webpack = require('webpack');
-let baseConfig = require('./base');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+let baseConfig = require('./base').baseConfig;
+let commonObj = require('./base').commonObj;
 
-const postcssQuery = {
-    plugins: (loader) => [
-        require('autoprefixer')({
-            browsers: ['last 2 versions', 'Android >= 4.0', 'Chrome >= 37', 'iOS>=7']
-        }),
-        require('postcss-flexbugs-fixes'),
-        require('postcss-gradientfixer')
-    ]
-};
-const autoprefixer_loader = {
-    loader: 'postcss-loader',
-    options: postcssQuery
-}
 
 let config = Object.assign({}, baseConfig, {
     entry: {
@@ -25,21 +11,18 @@ let config = Object.assign({}, baseConfig, {
         feeds: path.join(__dirname, '../src/routes/FeedsRoot')
     },
     cache: true,
-    // mode: 'development',
+    mode: 'development',
+    devServer: {
+        contentBase: './',
+        port: 8000
+    },
     module: {
         rules: [
             { test: /\.js$/, use: ['babel-loader'] },
-            // { test: /\.css$/, use: ['style-loader', 'css-loader', autoprefixer_loader] },
-            // { test: /\.scss$/, use: ['style-loader', 'css-loader', autoprefixer_loader, 'sass-loader'] }
-            { test: /\.css$/, use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', autoprefixer_loader] }) },
-            { test: /\.scss$/, use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', autoprefixer_loader, 'sass-loader'] }) }
+            { test: /\.css$/, use: ['style-loader', 'css-loader', commonObj.autoprefixer_loader] },
+            { test: /\.scss$/, use: ['style-loader', 'css-loader', commonObj.autoprefixer_loader, 'sass-loader'] }
         ]
-    },
-    plugins: [
-        new ExtractTextPlugin({
-            filename: '[name].css'
-        })
-    ]
+    }
 });
 
 module.exports = config;
