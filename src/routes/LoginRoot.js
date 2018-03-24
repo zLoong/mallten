@@ -1,28 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import '../styles/common.scss';
-import '../styles/feeds.scss';
+import '../styles/login.scss';
 
-class FeedsComponent extends React.Component {
+class LoginComponent extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
         return (
-            <div className='feeds'>
-                <div className='feeds-header'>
+            <div className='login'>
+                <div className='login-header'>
                     <div className='fl'>头像</div>
                     <div className='fr'>标签</div>
                 </div>
-                <div className='feeds-content'>
-                    Feeds内容
+                <div className='login-content'>
+                    Login内容
                 </div>
             </div>
         )
     }
 }
 ReactDOM.render(
-    <FeedsComponent />,
+    <PageComponent />,
     document.querySelector('#container')
 );

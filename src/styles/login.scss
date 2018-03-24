@@ -1,4 +1,4 @@
-.comment {
+.login {
     width: 100%;
     &-header {
         height: 48px;
@@ -15,5 +15,7 @@
     }
     &-content {
         color: red;
+        text-align: center;
+        padding-top: 120px;
     }
 }

@@ -1,0 +1,14 @@
+.feeds{    
+    margin-left: 12px;
+    margin-right: 12px;
+    &-header{
+        height: 40px;
+        width: 100%;
+        background: red;
+    }
+    &-content{
+        height: 120px;
+        width: 100%;
+        background: blue;
+    }
+}

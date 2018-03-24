@@ -1,6 +1,7 @@
 'use strict';
 
 let path = require('path');
+let webpack = require('webpack');
 let baseConfig = require('./base').baseConfig;
 let commonObj = require('./base').commonObj;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -9,10 +10,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 let config = Object.assign({}, baseConfig, {
     entry: {
         post: path.join(__dirname, '../src/routes/PostRoot'),
-        feeds: path.join(__dirname, '../src/routes/FeedsRoot')
+        feeds: path.join(__dirname, '../src/routes/FeedsRoot'),
+        login: path.join(__dirname, '../src/routes/LoginRoot'),
     },
     cache: true,
-    mode: 'production',  
+    mode: 'production',
     module: {
         rules: [
             { test: /\.js$/, use: ['babel-loader'] },
@@ -22,9 +24,27 @@ let config = Object.assign({}, baseConfig, {
     },
     plugins: [
         new ExtractTextPlugin({
-            filename: '[name].css'
+            filename: '[name].css',
+            allChunks: true
         })
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all',
+            name: 'common',
+            cacheGroups:{
+                vendor:{
+                    test: /react|lodash/,
+                    name: "vendor"
+                }
+            }
+        },
+        runtimeChunk: {
+            name: 'runtime',
+        }
+    }
+
+
 });
 
 module.exports = config;
